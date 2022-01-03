@@ -10,7 +10,7 @@ function ShowTodo(props) {
       <div id="show-todos">
         {props.todos.map((todo) => {
           return (
-            <div id={todo.id}>
+            <div key={todo.id}>
               {todo.title}
               <EditTodo idToEdit={todo.id} handleEdit={props.handleEdit} />
               <DeleteTodo
