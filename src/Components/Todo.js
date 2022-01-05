@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import AddTodo from './AddTodo';
 import ShowTodo from './ShowTodo';
 
@@ -8,6 +8,11 @@ var i = 0;
 function Todo() {
   const [value, setValue] = useState('');
   const [todos, setTodos] = useState([]);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   //For getting input
   const handleChange = (e) => {
@@ -47,6 +52,7 @@ function Todo() {
         value={value}
         handleChange={handleChange}
         handleAdd={handleAdd}
+        inputRef={inputRef}
       />
       <ShowTodo
         todos={todos}
